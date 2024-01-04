@@ -10,9 +10,8 @@ app.use(cors());
 
 app.get('/transactions', (req, res) =>{
     try{
-        res.send(db);
-        res.status(200)
-        res.end()
+        const data = db.db
+        res.status(200).json(data)
     }
     catch (err){
         console.error("erro:", err.message);
