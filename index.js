@@ -34,6 +34,27 @@ app.post('/transactions', (req, res) =>{
    
 })
 
+app.delete('/transactions/:id', (req, res) =>{
+    const id = req.params.id
+    try{
+       const removed = db.removeAtDB(id)
+ 
+       if(removed){
+            res.status(200).send("removido com sucesso!")
+        }
+        else{
+            res.status(204).send(`O ID:${id} não encontrado`)
+        }
+     
+    }
+    catch (err){
+        console.error(err)
+    }
+    finally{
+        res.end()
+    }
+})
+
 
 app.listen(port, ()=>{
     console.log(`servidor rodando na porta: ${port}`)

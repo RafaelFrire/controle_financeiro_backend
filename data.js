@@ -15,12 +15,31 @@ function insertAtDB(data){
     db.push(data)
 }
 
+function removeAtDB(id){
+    if(!id){
+        console.error("ID inválido fornecido para remoção");
+        return false;
+    }
+
+    // método para encontrar o id no banco de dados
+    const indexToRemove = db.findIndex(data => data.id == id);
+    if (indexToRemove !== -1) {
+        // Se o ID foi encontrado no array
+        db.splice(indexToRemove, 1);
+        return true; // Indica que o item foi removido com sucesso
+    } else {
+        return false; // Indica que o ID não foi encontrado
+    }
+
+}
+
+
 
 const db = [{
     id: 0,
     descricao: "Ração do cachorro",
     data: "11/12/2023",
-    recorrencia:"mensal",
+    categoria:"outros",
     transacao: "saida",
     valor: '59.99'
 },
@@ -29,7 +48,7 @@ const db = [{
     id: 1,
     descricao: "Comprar frutas",
     data: "11/12/2023",
-    recorrencia:"semanal",
+    categoria:"alimentacao",
     transacao: "saida",
     valor: '15.99'
 },
@@ -38,7 +57,7 @@ const db = [{
     id: 2,
     descricao: "Conta de Energia",
     data: "11/12/2023",
-    recorrencia:"mensal",
+    categoria:"moradia",
     transacao: "saida",
     valor: '119.99'
 },
@@ -48,7 +67,7 @@ const db = [{
     id: 3,
     descricao: "Salário",
     data: "11/12/2023",
-    recorrencia:"mensal",
+    categoria:"pagamento",
     transacao: "entrada",
     valor: '960.05'
 },
@@ -57,5 +76,6 @@ const db = [{
 
 module.exports = {
     db: db,
-    insertAtDB: insertAtDB
+    insertAtDB: insertAtDB,
+    removeAtDB: removeAtDB
 }
