@@ -46,11 +46,11 @@ const db = [{
 
 {
     id: 1,
-    descricao: "Comprar frutas",
+    descricao: "Almoço",
     data: "11/12/2023",
     categoria:"alimentacao",
     transacao: "saida",
-    valor: '15.99'
+    valor: '20.99'
 },
 
 {
