@@ -56,6 +56,12 @@ app.delete('/transactions/:id', (req, res) =>{
 })
 
 
+
+app.get("/", (req, res) =>{
+    res.send(`servidor rodando na porta: ${port}`)
+    res.end()
+})
+
 app.listen(port, ()=>{
     console.log(`servidor rodando na porta: ${port}`)
 });
